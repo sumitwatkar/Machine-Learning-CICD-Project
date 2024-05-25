@@ -1,5 +1,5 @@
-# Use the Python 3.8 slim version as the base image
-FROM python:3.8-slim-buster
+# Use the Python 3.9 slim version as the base image
+FROM python:3.9-slim
 
 # Update package lists and install AWS CLI
 RUN apt update -y && apt install awscli -y
@@ -11,6 +11,7 @@ WORKDIR /app
 COPY . /app
 
 # Install Python dependencies from requirements.txt
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Expose port 8080 to allow external connections
